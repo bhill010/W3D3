@@ -1,0 +1,29 @@
+puts "Please input your email address"
+user_email = gets.chomp
+puts "Would you like to visit a shortened URL or create one?"
+puts " 1 for shortened URL "
+puts " 2 to create a new one "
+response = gets.chomp.to_i
+
+case response
+  when 1
+    puts "Please input your short_url"
+    short_url = gets.chomp
+
+    puts "Retrieving url"
+    puts "..."
+    puts "..."
+
+    puts ShortenedUrl.find_by(short_url: short_url).long_url
+  when 2
+    puts "Please input your long_url"
+    long_url = gets.chomp
+
+    puts "Generating shortened url"
+    puts "..."
+    puts "..."
+
+    puts ShortenedUrl.short_url(User.new(email: user_email), long_url).short_url
+end
+
+puts "Goodbye!"
